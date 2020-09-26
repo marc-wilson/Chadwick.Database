@@ -3,18 +3,18 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Chadwick.Database.Models
 {
-    public class CsvProcessorJobs
+    public class CsvProcessorJob
     {
         [Key]
-        public int CsvId { get; set; }
-        public CommitProcessorJobs CommitJob { get; set; }
+        public int Id { get; set; }
+        public CommitProcessorJob CommitJob { get; set; }
         public string FileName { get; set; }
         public DateTime Finished { get; set; }
         public string Status { get; set; }
         public DateTime Started { get; set; }
 
 
-        public CsvProcessorJobs()
+        public CsvProcessorJob()
         {
             Started = DateTime.UtcNow;
         }

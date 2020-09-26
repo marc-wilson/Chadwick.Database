@@ -35,8 +35,8 @@ namespace Chadwick.Database
         public DbSet<Teams> Teams { get; set; }
         public DbSet<TeamsFranchises> TeamsFranchises { get; set; }
         public DbSet<TeamsHalf> TeamsHalf { get; set; }
-        public DbSet<CommitProcessorJobs> CommitProcessorJobs { get; set; }
-        public DbSet<CsvProcessorJobs> CsvProcessorJobs { get; set; }
+        public DbSet<CommitProcessorJob> CommitProcessorJobs { get; set; }
+        public DbSet<CsvProcessorJob> CsvProcessorJobs { get; set; }
         public DbSet<SearchIndexProcessorJobs> SearchIndexProcessorJobs { get; set; }
         public DbSet<ChadwickTables> ChadwickTables { get; set; }
         public DbSet<ChadwickFields> ChadwickFields { get; set; }
