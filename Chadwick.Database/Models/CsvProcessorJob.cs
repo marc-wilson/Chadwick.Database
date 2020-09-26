@@ -9,6 +9,7 @@ namespace Chadwick.Database.Models
         public int Id { get; set; }
         public CommitProcessorJob CommitJob { get; set; }
         public string FileName { get; set; }
+        public string DownloadUrl { get; set; }
         public DateTime Finished { get; set; }
         public string Status { get; set; }
         public DateTime Started { get; set; }

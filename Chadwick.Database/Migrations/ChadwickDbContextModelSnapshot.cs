@@ -603,6 +603,9 @@ namespace Chadwick.Database.Migrations
                     b.Property<int?>("CommitJobId")
                         .HasColumnType("int");
 
+                    b.Property<string>("DownloadUrl")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("FileName")
                         .HasColumnType("nvarchar(max)");
 
