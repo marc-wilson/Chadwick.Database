@@ -19,7 +19,7 @@ steps:
   inputs:
     command: 'build'
     projects: '**/*.csproj'
-    arguments: '-c Release'
+    arguments: '-c Release --no-restore'
 
 - task: UseGitVersion@5
   inputs:
