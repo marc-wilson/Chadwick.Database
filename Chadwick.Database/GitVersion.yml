@@ -1,0 +1,11 @@
+mode: Mainline
+next-version: 1.0.1
+branches:
+  feature:
+    regex: /^((?!master).)*$/
+    tag: alpha
+    mode: ContinuousDeployment
+  master:
+    tag: ''
+ignore:
+  sha: []
