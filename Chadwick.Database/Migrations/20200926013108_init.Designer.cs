@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Chadwick.Database.Migrations
 {
     [DbContext(typeof(ChadwickDbContext))]
-    [Migration("20200925235126_init")]
+    [Migration("20200926013108_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -562,9 +562,9 @@ namespace Chadwick.Database.Migrations
                     b.ToTable("CollegePlaying");
                 });
 
-            modelBuilder.Entity("Chadwick.Database.Models.CommitProcessorJobs", b =>
+            modelBuilder.Entity("Chadwick.Database.Models.CommitProcessorJob", b =>
                 {
-                    b.Property<int>("CommitId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -590,19 +590,19 @@ namespace Chadwick.Database.Migrations
                     b.Property<string>("Status")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("CommitId");
+                    b.HasKey("Id");
 
                     b.ToTable("CommitProcessorJobs");
                 });
 
-            modelBuilder.Entity("Chadwick.Database.Models.CsvProcessorJobs", b =>
+            modelBuilder.Entity("Chadwick.Database.Models.CsvProcessorJob", b =>
                 {
-                    b.Property<int>("CsvId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("CommitJobCommitId")
+                    b.Property<int?>("CommitJobId")
                         .HasColumnType("int");
 
                     b.Property<string>("FileName")
@@ -617,9 +617,9 @@ namespace Chadwick.Database.Migrations
                     b.Property<string>("Status")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("CsvId");
+                    b.HasKey("Id");
 
-                    b.HasIndex("CommitJobCommitId");
+                    b.HasIndex("CommitJobId");
 
                     b.ToTable("CsvProcessorJobs");
                 });
@@ -1778,11 +1778,11 @@ namespace Chadwick.Database.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Chadwick.Database.Models.CsvProcessorJobs", b =>
+            modelBuilder.Entity("Chadwick.Database.Models.CsvProcessorJob", b =>
                 {
-                    b.HasOne("Chadwick.Database.Models.CommitProcessorJobs", "CommitJob")
+                    b.HasOne("Chadwick.Database.Models.CommitProcessorJob", "CommitJob")
                         .WithMany()
-                        .HasForeignKey("CommitJobCommitId");
+                        .HasForeignKey("CommitJobId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

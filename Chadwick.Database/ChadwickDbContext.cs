@@ -46,7 +46,7 @@ namespace Chadwick.Database
         public ChadwickDbContext() : base(new DbContextOptionsBuilder()
             .UseSqlServer(
                 new ConfigurationBuilder()
-                    .AddJsonFile(Path.Combine(Directory.GetCurrentDirectory(), "appsettings.example.json"))
+                    .AddJsonFile(Path.Combine(Directory.GetCurrentDirectory(), "appsettings.json"))
                     .Build()["ConnectionStrings:DefaultConnection"]).Options)
         {
         }
