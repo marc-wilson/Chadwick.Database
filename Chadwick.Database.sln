@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chadwick.Database", "Chadwick.Database\Chadwick.Database.csproj", "{2376DC17-E91B-4224-86CB-CE039A3041B4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2376DC17-E91B-4224-86CB-CE039A3041B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2376DC17-E91B-4224-86CB-CE039A3041B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2376DC17-E91B-4224-86CB-CE039A3041B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2376DC17-E91B-4224-86CB-CE039A3041B4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
