@@ -15,6 +15,34 @@ steps:
     restoreSolution: '$(solution)'
 
 - task: DotNetCoreCLI@2
+  displayName: 'Build Projects'
   inputs:
     command: 'build'
     projects: '**/*.csproj'
+    arguments: '-c Release'
+
+- task: UseGitVersion@5
+  inputs:
+    versionSpec: '5.x'
+    useConfigFile: true
+    configFilePath: 'Chadwick.Database/GitVersion.yml'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Pack'
+  inputs:
+    command: pack
+    packagesToPack: 'Chadwick.Database/Chadwick.Database.csproj'
+    includesymbols: true
+    includesource: true
+    nobuild: true
+    versioningScheme: byEnvVar
+    versionEnvVar: UseGitVersion.GitVersion.NuGetVersion
+
+- task: NuGetCommand@2
+  displayName: 'Push'
+  inputs:
+    command: 'push'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
+    nuGetFeedType: 'internal'
+    publishVstsFeed: '2d954ad5-bc4f-4b9c-b431-f866236fe7ff'
+    allowPackageConflicts: true
