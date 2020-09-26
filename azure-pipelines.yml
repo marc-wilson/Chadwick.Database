@@ -5,6 +5,7 @@ variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
+  BUILD_BUILDNUMBER: $(Build.BuildNumber)
 
 steps:
 - task: NuGetToolInstaller@1
