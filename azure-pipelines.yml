@@ -23,6 +23,7 @@ steps:
     arguments: '-c Release --no-restore'
 
 - task: DotNetCoreCLI@2
+  displayName: $(BUILD_BUILDNUMBER)
   inputs:
     command: 'pack'
     packagesToPack: 'Chadwick.Database/Chadwick.Database.csproj'
