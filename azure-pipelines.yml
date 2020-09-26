@@ -5,7 +5,7 @@ variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
-  BUILD_BUILDNUMBER: $(Build.BuildNumber)
+  BUILD_BUILDNUMBER: '$(Build.BuildNumber)'
 
 steps:
 - task: NuGetToolInstaller@1
@@ -23,7 +23,7 @@ steps:
     arguments: '-c Release --no-restore'
 
 - task: DotNetCoreCLI@2
-  displayName: $(BUILD_BUILDNUMBER)
+  displayName: '$(BUILD_BUILDNUMBER)'
   inputs:
     command: 'pack'
     packagesToPack: 'Chadwick.Database/Chadwick.Database.csproj'
