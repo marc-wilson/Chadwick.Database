@@ -277,7 +277,7 @@ namespace Chadwick.Database.Migrations
                 name: "CommitProcessorJobs",
                 columns: table => new
                 {
-                    CommitId = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CommitHash = table.Column<string>(nullable: true),
                     Started = table.Column<DateTime>(nullable: false),
@@ -289,7 +289,7 @@ namespace Chadwick.Database.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CommitProcessorJobs", x => x.CommitId);
+                    table.PrimaryKey("PK_CommitProcessorJobs", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -917,9 +917,9 @@ namespace Chadwick.Database.Migrations
                 name: "CsvProcessorJobs",
                 columns: table => new
                 {
-                    CsvId = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CommitJobCommitId = table.Column<int>(nullable: true),
+                    CommitJobId = table.Column<int>(nullable: true),
                     FileName = table.Column<string>(nullable: true),
                     Finished = table.Column<DateTime>(nullable: false),
                     Status = table.Column<string>(nullable: true),
@@ -927,12 +927,12 @@ namespace Chadwick.Database.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CsvProcessorJobs", x => x.CsvId);
+                    table.PrimaryKey("PK_CsvProcessorJobs", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_CsvProcessorJobs_CommitProcessorJobs_CommitJobCommitId",
-                        column: x => x.CommitJobCommitId,
+                        name: "FK_CsvProcessorJobs_CommitProcessorJobs_CommitJobId",
+                        column: x => x.CommitJobId,
                         principalTable: "CommitProcessorJobs",
-                        principalColumn: "CommitId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -981,9 +981,9 @@ namespace Chadwick.Database.Migrations
                 column: "TableId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_CsvProcessorJobs_CommitJobCommitId",
+                name: "IX_CsvProcessorJobs_CommitJobId",
                 table: "CsvProcessorJobs",
-                column: "CommitJobCommitId");
+                column: "CommitJobId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

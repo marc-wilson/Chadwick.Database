@@ -3,10 +3,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Chadwick.Database.Models
 {
-    public class CommitProcessorJobs
+    public class CommitProcessorJob
     {
         [Key]
-        public int CommitId { get; set; }
+        public int Id { get; set; }
         public string CommitHash { get; set; }
         public DateTime Started { get; set; }
         public string Status { get; set; }
@@ -15,7 +15,7 @@ namespace Chadwick.Database.Models
         public int CompletedCount { get; set; }
         public int FailCount { get; set; }
 
-        public CommitProcessorJobs()
+        public CommitProcessorJob()
         {
             Started = DateTime.UtcNow;
         }

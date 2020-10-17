@@ -1,0 +1,41 @@
+pool:
+  name: 'Default'
+
+variables:
+  solution: '**/*.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+
+steps:
+- task: NuGetToolInstaller@1
+
+- task: NuGetCommand@2
+  displayName: 'Restore Nuget Packages'
+  inputs:
+    restoreSolution: '$(solution)'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Build Projects'
+  inputs:
+    command: 'build'
+    projects: '**/*.csproj'
+    arguments: '-c Release --no-restore'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Pack'
+  inputs:
+    command: 'pack'
+    packagesToPack: 'Chadwick.Database/Chadwick.Database.csproj'
+    nobuild: true
+    includesymbols: true
+    includesource: true
+    versioningScheme: 'byEnvVar'
+    versionEnvVar: 'Build.BuildNumber'
+- task: NuGetCommand@2
+  displayName: 'Push'
+  inputs:
+    command: 'push'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
+    nuGetFeedType: 'internal'
+    publishVstsFeed: '6156dfa9-0e8b-435c-ade5-311c67163a59/5ccea2b5-04b7-4811-a469-5eb526cea689'
+    allowPackageConflicts: true
